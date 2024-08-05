@@ -1,0 +1,84 @@
+<%- include('../includes/header.ejs')%>
+<link rel="stylesheet" href="/css/password_eye.css">
+</head>
+<body class="red lighten-4">
+    <header>
+        <%- include('../includes/navbar.ejs')%>
+    </header>
+    <main>
+    <div class="right" style="display: flex; margin-right: 10rem;">
+        <a href="/addPost" class="btn teal small" style="margin-top: 60px; margin-right: 10px;">Add Post</a>
+        <a href="/viewYourPosts" class="btn yellow darken-2 small" style="margin-top: 60px; margin-right: 10px;">View Your Post</a>
+        <a href="/changePassword" class="btn orange accent-3 small" style="margin-top: 60px; margin-right: 10px;">Update Credentials</a>
+        <a href="/deleteAccount/<%=profile_data._id%>" class="btn red darken-4 small" style="margin-top: 60px; margin-right: 10px;">Delete Account</a>
+        </div>
+        <div class="container">
+            <div class="row">
+                <% if(!profile_data.user_image){%>
+                    <img src="/img/user_image.png" alt="" class="circle" height="200px" width="200px" style="margin-top: 8rem; margin-left: 30rem;">
+                    <a href="/userImage" class="btn-floating halfway-fab waves-effect waves-light red" style="margin-bottom: 18rem; margin-right: 44rem;"><i class="fa-solid fa-plus"></i></a>
+                    <%}else{%>
+                <img src="/<%=profile_data.user_image%>" alt="" class="circle" height="200px" width="200px" style="margin-top: 8rem; margin-left: 30rem;">
+                <a href="/userImage" class="btn-floating halfway-fab waves-effect waves-light red" style="margin-bottom: 18rem; margin-right: 44rem;"><i class="fa-solid fa-square-pen"></i></a>
+                <%}%>
+                <div class="card-panel hoverable" style="margin-top: 2rem;">
+                    <form action="" method="post">
+                        <input type="hidden" name="id" value="<%=profile_data._id%>">
+                        <textarea name="bio" id="bio" class="materialize-textarea" placeholder="Write your Bio"></textarea>
+                    </form>
+                </div>
+            </div>
+            <div class="row">
+                <div class="card-panel hoverable" style="margin-top: 30px;">
+                    <form>
+                        <div class="input-field col s12">
+                            <input placeholder="" id="first_name" type="text" class="validate" value="<%=profile_data.full_name%>">
+                            <label for="first_name">Full Name</label>
+                        </div>
+                        <div class="input-field col s12">
+                            <input placeholder="" id="user_name" type="text" value="<%=profile_data.user_name%>">
+                            <label for="user_name">User Name</label>
+                        </div> 
+                        <div class="input-field col s12">
+                            <input placeholder="" id="user_name" type="text" value="<%=joining_date%>">
+                            <label for="user_name">Joining Date</label>
+                        </div> 
+                        <div class="input-field col s12">
+                            <input placeholder="" id="email" type="email" value="<%=profile_data.email%>">
+                            <label for="email">Email</label>
+                        </div>
+                        <div class="input-field col s12">
+                            <input placeholder="" id="phone_no" type="text" class="validate" value="<%=profile_data.phone_no%>">
+                            <label for="phone_no">Phone Number</label>
+                        </div>
+                        <div class="input-field col s12">
+                            <input placeholder="" id="gender" type="text" value="<%=profile_data.gender%>">
+                            <label for="gender">Gender</label>
+                        </div>
+                        <div class="input-field col s12">
+                            <textarea id="textarea1" class="materialize-textarea" ><%=profile_data.address%></textarea>
+                            <label for="textarea1">Address</label>
+                          </div>
+                        <div class="input-field col s12">
+                            <input placeholder="" id="date" type="text" value="<%=profile_data.date%>">
+                            <label for="date">Date of Birth</label>
+                        </div>
+                        <div class="input-field col s12">
+                            <input placeholder="" id="education" type="text" value="<%=profile_data.education%>">
+                            <label for="education">Education</label>
+                        </div>
+                        <div class="input-field col s12">
+                            <input placeholder="" id="workplace" type="text" value="<%=profile_data.workplace%>">
+                            <label for="education">Workplace</label>
+                        </div>
+                        <div class="input-field col s12">
+                            <input placeholder="" id="relationship" type="text" value="<%=profile_data.relationship%>">
+                            <label for="relationship">Relationship</label>
+                        </div> 
+                            <a href="/editProfile/<%=profile_data._id%>" class="waves-effect waves-light btn" style="margin-left: 32rem;">Edit Profile</a>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </main>
+<%- include('../includes/footer.ejs')%>

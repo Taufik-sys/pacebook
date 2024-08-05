@@ -1,0 +1,79 @@
+<%- include('../includes/header.ejs')%>
+<link rel="stylesheet" href="/css/password_eye.css">
+<link rel="stylesheet" href="/css/landingPage.css">
+</head>
+<body>
+    <header>
+    </header>
+    <main>
+        <h1 class="brown-text center-align" style="margin-left: 8rem; margin-top: 12rem; ">Registration Page</h1>
+        <div class="container" style="margin-top: 100px;">
+            <div class="row">
+                <form action="/register" method="post" autocomplete="on" class="login-form">
+                    <% if(frontError.length>0){%>
+                        <% for(let error of frontError){%>
+                            <p class="red-text darken-2" style="margin-bottom: 25px;"><%=error.msg%></p>
+                        <%}%>
+                    <%}%>
+                    <div class="input-field col s6">
+                        <input placeholder="John" id="first_name" type="text" class="validate" name="first_name" value="<%=data.first_name%>">
+                        <label for="first_name" class="white-text">First Name</label>
+                    </div>
+                    <div class="input-field col s6">
+                        <input placeholder="Doe" id="last_name" type="text" class="validate" name="last_name" value="<%=data.last_name%>">
+                        <label for="last_name" class="white-text">Last Name</label>
+                    </div>
+                    <div class="input-field col s12">
+                        <input placeholder="johndoe123@abc.com" id="email" type="email" class="validate" name="email" value="<%=data.email%>">
+                        <label for="email" class="white-text">Email</label>
+                    </div>
+                    <div class="input-field col s12">
+                        <input placeholder="123456789" id="phone_no" type="text" class="validate" name="phone_no" value="<%=data.phone_no%>">
+                        <label for="phone_no" class="white-text">Phone Number</label>
+                    </div>
+                    <div class="input-field col s12">
+                        <p>
+                            <label for="gender" class="white-text">Gender</label>
+                            <label>
+                              <input name="gender" type="radio" class="with-gap input-field" value="Male">
+                              <span class="white-text">Male</span>
+                            </label>
+                            <label>
+
+                                <input name="gender" type="radio" class="with-gap input-field" value="Female">
+                                <span class="white-text">Female</span>
+                            </label>
+                            <label>
+                                <input name="gender" type="radio" class="with-gap input-field" value="Others">
+                                <span class="white-text">Others</span>
+                            </label>
+                        </p>
+                    </div>
+                    <div class="input-field col s12">
+                        <textarea id="textarea1" class="materialize-textarea validate" name="address"><%=data.address%></textarea>
+                        <label for="textarea1" class="white-text">Address</label>
+                      </div>
+                    <div class="input-field col s12">
+                        <input placeholder="" id="date" type="date" class="validate" name="date" value="<%=data.date%>">
+                        <label for="date" class="white-text">Date of Birth</label>
+                    </div>
+                    <div class="input-field col s12">
+                        <input placeholder="johndoe123" id="user_name" type="text" class="validate" name="user_name" value="<%=data.user_name%>">
+                        <label for="user_name" class="white-text">User Name</label>
+                    </div> 
+                    <div class="input-field col s12">
+                        <input placeholder="" id="password" type="password" class="validate" name="password">
+                        <span class="password-toggle-icon"><i class="fa-solid fa-eye-slash eye-slash-password"></i><i class="fa-solid fa-eye eye-password"></i></span>
+                        <label for="password" class="white-text">Password</label>
+                    </div>
+                    <div class="input-field col s12">
+                        <input placeholder="" id="confirm_password" type="password" class="validate" name="confirm_password">
+                        <span class="password-toggle-icon"><i class="fa-solid fa-eye-slash eye-slash-confirm-password"></i><i class="fa-solid fa-eye eye-confirm-password"></i></span>
+                        <label for="confirm_password" class="white-text">Confirm Password</label>
+                    </div> 
+                    <button type="submit" class="waves-effect waves-light btn brown" style="margin-left: 11rem;">Sign Up</button>
+                </form>
+            </div>
+        </div>
+    </main>
+<%- include('../includes/footer.ejs')%>

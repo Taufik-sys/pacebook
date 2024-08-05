@@ -1,0 +1,24 @@
+<%- include('../includes/header.ejs')%>
+</head>
+<body class="red lighten-4">
+    <header>
+        <%- include('../includes/navbar.ejs')%>
+    </header>
+    <main>
+        <div class="container">
+            <div class="row">
+                <% if(data.length>0){%>
+                    <% for(let obj of data){%>
+                        <form action="">
+                            <input type="text" value="<%=obj.user_name%>">
+                            <textarea name="" id="" cols="20" rows="10"><%=obj.comment%></textarea>
+                        </form>
+                        <div class="divider"></div>
+                    <%}%>
+                <%}else{%>
+                    <h2>Data Not Found</h2>
+                <%}%>
+            </div>
+        </div>
+    </main>
+<%- include('../includes/footer.ejs')%>

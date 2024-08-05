@@ -1,0 +1,70 @@
+const mongoose=require('mongoose');
+const userRegisterSchema=new mongoose.Schema({
+    first_name:{
+        type:String,
+        required:true
+    },
+    last_name:{
+        type:String,
+        required:true
+    },
+    full_name:{
+        type:String,
+        required:true
+    },
+    email:{
+        type:String,
+        required:true
+    },
+    phone_no:{
+        type:Number,
+        required:true
+    },
+    gender:{
+        type:String,
+        required:true
+    },
+    address:{
+        type:String,
+        required:true
+    },
+    date:{
+        type:String,
+        required:true
+    },
+    user_name:{
+        type:String,
+        required:true
+    },
+    password:{
+        type:String,
+        required:true
+    },
+    relationship:{
+        type:String,
+        default:'N/A'
+    },
+    education:{
+        type:String,
+        default:'N/A'
+    },
+    workplace:{
+        type:String,
+        default:'N/A'
+    },
+    user_image:{
+        type:String,
+        default:""
+    },
+    user_bio:{
+        type:String,
+        default:""
+    }
+},{
+    timestamps:true,
+    versionKey:false
+})
+
+const userRegisterModel=new mongoose.model('user_register_details',userRegisterSchema);
+
+module.exports=userRegisterModel;

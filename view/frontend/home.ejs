@@ -1,0 +1,77 @@
+<%- include('../includes/header.ejs')%>
+</head>
+<body class="red lighten-4">
+    <header>
+        <%- include('../includes/navbar.ejs')%>
+    </header>
+    <main>
+        <div class="container">
+            <div class="row" style="margin-left: 20rem;">
+                <div class="col s12 m7">
+                  <% for(let obj of data){%>
+                    <div class="divider"></div>
+                  <div class="card" style="margin-top: 30px;">
+                    <div class="card-content">
+                      <p style="font-size: 0.8rem;"><b><%=obj.full_name%></b></p>
+                      <p style="margin-top: 8px;"><%=obj.post_text%></p>
+                    </div>
+                    <div class="card-image">
+                      <img src="/<%=obj.post_media%>" height="500px">
+                    </div>
+                    <div class="card-action">
+                      <form action="/postLike" id="postForm" method="post">
+                        <input type="hidden" name="owner_email" value="<%=obj.email%>">
+                        <input type="hidden" name="id" value="<%=obj._id%>">
+                        <% if(obj.likes===0){%>
+                        <button type="submit" class="btn teal"><i class="fa-regular fa-thumbs-up"></i>  Like</button>
+                        <%}else{%>
+                          <button type="submit" class="btn teal"><i class="fa-solid fa-thumbs-up"></i>  <%=obj.likes%></button>
+                          <%}%>
+                          <a href="/allComments/<%=obj._id%>" class="btn teal right"><i class="fa-solid fa-comment"></i>  All Comments</a>
+                      </form>
+                    </div>
+                    <div>
+                      <form action="/postComment" method="post" style="padding-top: 10px;">
+                        <input type="hidden" name="owner_email" value="<%=obj.email%>">
+                        <input type="hidden" name="user_email" value="<%=user_data.email%>">
+                        <input type="hidden" name="user_name" value="<%=user_data.full_name%>">
+                        <input type="hidden" name="id" value="<%=obj._id%>">
+                        <textarea name="comment" id="" cols="30" rows="10" placeholder="Write your comments"></textarea>
+                        <input type="submit" value="Submit" class="btn green" style="margin-left: 10.5rem; margin-bottom:2px; border-radius: 6px;">
+                      </form>
+                    </div>           
+                    <!-- <div class="divider"></div> -->
+                    <%}%>
+                  </div>
+                  <h5 class="teal-text center-align"> Add more Friends</h5> 
+                  <swiper-container class="mySwiper">
+                    <% for(let obj of friends){%>
+                      <swiper-slide>
+                        <div class="row">
+                          <div class="col s12 m6" style="margin-left: 7rem;">
+                            <div class="card">
+                              <div class="card-image">
+                                <img src="/<%=obj.user_image%>" alt="..." height="200px">
+                                <a class="btn-floating halfway-fab waves-effect waves-light red small"><i class="fa-solid fa-user-plus"></i></a>
+                              </div>
+                              <div class="card-content">
+                                <p><%=obj.full_name%></p>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </swiper-slide>
+                    <%}%>
+                  </swiper-container>
+                </div>
+                <div>
+                </div>
+                <form action="/home/<%=count%>" method="post">
+                  <input type="hidden" name="count" value="<%=count%>">
+                  <button type="submit" class="btn teal" style="margin-left: 10rem; border-radius: 5px;">Read More</button>
+                </form>
+              </div>
+        </div>
+        
+    </main>
+<%- include('../includes/footer.ejs')%>

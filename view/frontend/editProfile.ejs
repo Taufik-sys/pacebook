@@ -1,0 +1,64 @@
+<%- include('../includes/header.ejs')%>
+<link rel="stylesheet" href="/css/profile.css">
+</head>
+<body class="red lighten-4">
+    <header>
+        <%- include('../includes/navbar.ejs')%>
+    </header>
+    <main>
+        <h2 class="teal-text center-align">EDIT YOUR PROFILE</h2>
+        <div class="container">
+            <div class="row">
+                <div class="card-panel hoverable" style="margin-top: 50px;">
+                    <form action="/editProfile/<%=data._id%>" method="post">
+                        <div class="input-field col s12">
+                            <input placeholder="" id="id" type="hidden" name="id" value="<%=data._id%>">
+                            
+                        </div>
+                        <div class="input-field col s12">
+                            <input placeholder="" id="first_name" type="text" class="validate" name="first_name" value="<%=data.first_name%>">
+                            <label for="first_name">Full Name</label>
+                        </div>
+                        <div class="input-field col s12">
+                            <input placeholder="" id="user_name" type="text" name="user_name"  value="<%=data.user_name%>">
+                            <label for="user_name">User Name</label>
+                        </div> 
+                        <div class="input-field col s12">
+                            <input placeholder="" id="email" type="email" name="email" value="<%=data.email%>" disabled>
+                            <label for="email">Email</label>
+                        </div>
+                        <div class="input-field col s12">
+                            <input placeholder="" id="phone_no" type="text" class="validate" name="phone_no" value="<%=data.phone_no%>">
+                            <label for="phone_no">Phone Number</label>
+                        </div>
+                        <div class="input-field col s12">
+                            <input placeholder="" id="gender" type="text" name="gender" value="<%=data.gender%>">
+                            <label for="gender">Gender</label>
+                        </div>
+                        <div class="input-field col s12">
+                            <textarea id="textarea1" class="materialize-textarea" name="address"><%=data.address%></textarea>
+                            <label for="textarea1">Address</label>
+                          </div>
+                        <div class="input-field col s12">
+                            <input placeholder="" id="date" type="text" name="date" value="<%=data.date%>" disabled>
+                            <label for="date">Date of Birth</label>
+                        </div>
+                        <div class="input-field col s12">
+                            <input placeholder="" id="education" type="text" name="education" value="<%=data.education%>">
+                            <label for="education">Education</label>
+                        </div>
+                        <div class="input-field col s12">
+                            <input placeholder="" id="workplace" type="text" name="workplace" value="<%=data.workplace%>">
+                            <label for="education">Workplace</label>
+                        </div>
+                        <div class="input-field col s12">
+                            <input placeholder="" id="relationship" type="text" name="relationship" value="<%=data.relationship%>">
+                            <label for="relationship">Relationship</label>
+                        </div> 
+                        <button type="submit" class="waves-effect waves-light btn" style="margin-left: 32rem;">Update</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </main>
+<%- include('../includes/footer.ejs')%>

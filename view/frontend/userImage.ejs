@@ -1,0 +1,27 @@
+<%- include('../includes/header.ejs')%>
+</head>
+<body class="red lighten-4">
+    <header>
+        <%- include('../includes/navbar.ejs')%>
+    </header>
+    <main>
+        <h2 class="center-align teal-text" style="margin-top: 4rem;">Add Your Image</h2>
+        <div class="container" style="margin-top: 6rem;">
+            <div class="row">
+                <form action="/userImage" method="post" enctype="multipart/form-data">
+                    <input type="hidden" name="id" value="<%=data%>">
+                    <div class="file-field input-field">
+                        <div class="btn">
+                          <span>Browse Files</span>
+                          <input type="file" name="user_image" id="user_image">
+                        </div>
+                        <div class="file-path-wrapper">
+                          <input class="file-path validate" type="text" name="user_image_name">
+                        </div>
+                    </div>
+                    <button type="submit" class="waves-effect waves-light btn">Add Image</button>
+                </form>
+            </div>
+        </div>
+    </main>
+<%- include('../includes/footer.ejs')%>
